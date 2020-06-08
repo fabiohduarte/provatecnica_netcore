@@ -29,14 +29,15 @@ namespace ProvaTecnica.Infrastructure
             return _context;
         }
 
-        public async Task<SearchResults> GetUsuarios(SearchRequest request)
+        public async Task<SearchResults> GetUsuarios(CriterioBusca criterio)
         {
             SearchResults result = new SearchResults();
 
             try
             {
-
-                result.Results = getContext().Usuario.ToList<Usuario>();/// <Usuario>;
+                result.Results = getContext().Usuario.Where(p => (String.IsNullOrEmpty(criterio.Nome) || p.Nome.Contains(criterio.Nome)) &&
+                                                                 (String.IsNullOrEmpty(criterio.Login) || p.Login.Contains(criterio.Login)) &&
+                                                                 (String.IsNullOrEmpty(criterio.Email) || p.Email.Contains(criterio.Email))).ToList();
             }
             catch (Exception ex)
             {

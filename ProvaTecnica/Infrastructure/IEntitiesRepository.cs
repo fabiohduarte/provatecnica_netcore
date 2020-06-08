@@ -10,7 +10,7 @@ namespace ProvaTecnica.Infrastructure
 {
     public interface IEntitiesRepository
     {
-        Task<SearchResults> GetUsuarios(SearchRequest request);
+        Task<SearchResults> GetUsuarios(CriterioBusca request);
 
         Task<Usuario> GetUsuarioById(int id);
 

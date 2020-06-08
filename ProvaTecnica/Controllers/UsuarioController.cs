@@ -20,7 +20,7 @@ namespace ProvaTecnica.Controllers
         }
     
         [HttpGet("list")]
-        public async Task<ObjectResult> List([FromQuery] SearchRequest request)
+        public async Task<ObjectResult> List([FromQuery] CriterioBusca req)
         {
             SearchResults result = new SearchResults();
 
@@ -28,7 +28,7 @@ namespace ProvaTecnica.Controllers
             // {
             result =
 
-                await _entitiesRepository.GetUsuarios(request);
+                await _entitiesRepository.GetUsuarios(req);
                     
                   
            // }
@@ -44,7 +44,7 @@ namespace ProvaTecnica.Controllers
         }
 
         [HttpPost("put")]
-        public async Task<ObjectResult> Put( Usuario usuario)
+        public async Task<ObjectResult> Put(Usuario usuario)
         {
             var resp = await _entitiesRepository.PutUsuario(usuario);
             return Ok(resp);
