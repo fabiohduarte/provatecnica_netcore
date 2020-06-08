@@ -1,0 +1,109 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Pessoal\\WebApplication1\\WebApplication1\\LogViewer\\Prova.csproj": {}
+  },
+  "projects": {
+    "C:\\Pessoal\\WebApplication1\\WebApplication1\\LogViewer\\Prova.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Pessoal\\WebApplication1\\WebApplication1\\LogViewer\\Prova.csproj",
+        "projectName": "Prova",
+        "projectPath": "C:\\Pessoal\\WebApplication1\\WebApplication1\\LogViewer\\Prova.csproj",
+        "packagesPath": "C:\\Users\\Fabio_Duarte\\.nuget\\packages\\",
+        "outputPath": "C:\\Pessoal\\WebApplication1\\WebApplication1\\LogViewer\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Fabio_Duarte\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "http://dcsartifacts.dell.com/artifactory/api/nuget/nuget": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.30, )"
+            },
+            "Dfs.Commerce.Packages.ApplicationVitals": {
+              "target": "Package",
+              "version": "[1.0.8, )"
+            },
+            "Dfs.Commerce.Packages.Http": {
+              "target": "Package",
+              "version": "[1.0.15, )"
+            },
+            "Dfs.Commerce.Packages.Logger": {
+              "target": "Package",
+              "version": "[1.0.35, )"
+            },
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            },
+            "Microsoft.AspNetCore.SpaServices.Extensions": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            },
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[1.1.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
+            "TimeZoneConverter": {
+              "target": "Package",
+              "version": "[3.2.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
