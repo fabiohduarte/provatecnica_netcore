@@ -6,6 +6,8 @@ import { Usuarios } from './components/Usuarios';
 import { ManterUsuario } from './components/ManterUsuario';
 import { Funcionalidades } from './components/Funcionalidades';
 import { ManterFuncionalidade } from './components/ManterFuncionalidade';
+import { Perfis } from './components/Perfis';
+import { ManterPerfil } from './components/ManterPerfil';
 
 import './custom.css'
 
@@ -21,6 +23,8 @@ export default class App extends Component {
         <Route path='/manterusuario' component={ManterUsuario} />
         <Route path='/funcionalidades' component={Funcionalidades} />
         <Route path='/manterfuncionalidade' component={ManterFuncionalidade} />
+        <Route path='/perfis' component={Perfis} />
+        <Route path='/manterperfil' component={ManterPerfil} />
       </Layout>
     );
   }
