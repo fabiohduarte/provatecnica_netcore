@@ -17,6 +17,12 @@ export default () => {
       method: 'isEmpty',
       validWhen: false,
       message: 'E-mail está incompleto ou faltando.'
+    },
+    {
+      field: 'perfil',
+      method: 'isEmpty',
+      validWhen: false,
+      message: 'Perfil está incompleto ou faltando.'
     }])
 }
 

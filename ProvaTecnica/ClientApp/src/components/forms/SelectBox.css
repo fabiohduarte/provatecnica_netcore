@@ -1,0 +1,19 @@
+ .select-box label {
+    margin-bottom: 0;
+} 
+
+.select-box .error-message {
+    width: 100%;
+    margin-top: .25rem;
+    font-size: 12px;
+    color: #dc3545;
+    font-weight: bold
+}
+
+.select-box.invalid select {
+    border-color: #dc3545;
+}
+
+.select-box.invalid select:focus {
+    box-shadow: 0 0 0 0.2rem rgba(220,53,69,.25)
+}

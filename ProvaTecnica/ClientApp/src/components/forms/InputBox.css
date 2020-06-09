@@ -1,3 +1,7 @@
+.input-box label {
+    margin-bottom: 0;
+} 
+
 .input-box .error-message {
     width: 100%;
     margin-top: .25rem;

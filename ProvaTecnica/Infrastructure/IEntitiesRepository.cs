@@ -16,5 +16,9 @@ namespace ProvaTecnica.Infrastructure
 
         Task<int> PutUsuario(Usuario usuario);
 
+        Task DeleteUsuario(int id);
+
+        Task<SearchResults> GetPerfis(CriterioBusca request);
+
     }
 }

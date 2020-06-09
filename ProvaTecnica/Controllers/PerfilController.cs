@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 namespace ProvaTecnica.Controllers
 {
     [Route("api/[controller]")]
-    public class UsuarioController : ControllerBase
+    public class PerfilController : ControllerBase
     {
         private readonly IEntitiesRepository _entitiesRepository;
      
-        public UsuarioController(IEntitiesRepository entitiesRepository)
+        public PerfilController(IEntitiesRepository entitiesRepository)
         {
             _entitiesRepository = entitiesRepository; 
         }
@@ -22,17 +22,8 @@ namespace ProvaTecnica.Controllers
         [HttpGet("list")]
         public async Task<ObjectResult> List([FromQuery] CriterioBusca req)
         {
-            SearchResults result = new SearchResults();
-
-            //if (!String.IsNullOrEmpty(request.StartTime) && (!String.IsNullOrEmpty(request.EndTime)))
-            // {
-            result =
-
-                await _entitiesRepository.GetUsuarios(req);
-                    
-                  
-           // }
-
+            SearchResults result = new SearchResults();         
+            result = await _entitiesRepository.GetPerfis(req);
             return Ok(result);
         }
 
@@ -48,13 +39,6 @@ namespace ProvaTecnica.Controllers
         {
             var resp = await _entitiesRepository.PutUsuario(usuario);
             return Ok(resp);
-        }
-
-        [HttpPost("delete")]
-        public async Task<ObjectResult> Delete(int id)
-        {
-            await _entitiesRepository.DeleteUsuario(id);
-            return Ok("");
         }
     }
 }

@@ -35,9 +35,40 @@ namespace ProvaTecnica.Infrastructure
 
             try
             {
-                result.Results = getContext().Usuario.Where(p => (String.IsNullOrEmpty(criterio.Nome) || p.Nome.Contains(criterio.Nome)) &&
-                                                                 (String.IsNullOrEmpty(criterio.Login) || p.Login.Contains(criterio.Login)) &&
-                                                                 (String.IsNullOrEmpty(criterio.Email) || p.Email.Contains(criterio.Email))).ToList();
+                result.Results = (from u in getContext().Usuario
+                                  join p in getContext().Perfil on u.IdPerfil equals p.IdPerfil
+                                  select new
+                                  {
+                                     IdUsuario = u.IdUsuario,
+                                     Nome =  u.Nome,
+                                     Login = u.Login,
+                                     Email = u.Email,
+                                     IdPerfil = u.IdPerfil,
+                                     DescPerfil = p.DescPerfil
+                                  })
+
+                       .Where(p => (String.IsNullOrEmpty(criterio.Nome) || p.Nome.Contains(criterio.Nome)) &&
+                                                               (String.IsNullOrEmpty(criterio.Login) || p.Login.Contains(criterio.Login)) &&
+                                                               (String.IsNullOrEmpty(criterio.Email) || p.Email.Contains(criterio.Email)) &&
+                                                               (criterio.IdPerfil == 0 || p.IdPerfil == criterio.IdPerfil)).ToList();
+            }            
+            catch (Exception ex)
+            {
+
+            }
+
+            return result;
+        }
+
+        public async Task<SearchResults> GetPerfis(CriterioBusca criterio)
+        {
+            SearchResults result = new SearchResults();
+
+            try
+            {
+                result.Results = getContext().Perfil.ToList();       //Where(p => (String.IsNullOrEmpty(criterio.Nome) || p.Nome.Contains(criterio.Nome)) &&
+                                                              //   (String.IsNullOrEmpty(criterio.Login) || p.Login.Contains(criterio.Login)) &&
+                                                               //  (String.IsNullOrEmpty(criterio.Email) || p.Email.Contains(criterio.Email))).ToList();
             }
             catch (Exception ex)
             {
@@ -79,6 +110,23 @@ namespace ProvaTecnica.Infrastructure
                 throw ex;
             }
           
+        }
+
+        public async Task DeleteUsuario(int id)
+        {
+            try
+            {
+                var context = getContext();
+           
+                var usu = context.Usuario.FirstOrDefault(u => u.IdUsuario == id);
+                context.Remove(usu);
+                context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
         }
     }
 }
