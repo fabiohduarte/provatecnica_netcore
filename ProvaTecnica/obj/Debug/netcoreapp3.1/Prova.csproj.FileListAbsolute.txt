@@ -1,0 +1,7 @@
+C:\Pessoal\WebApplication1\WebApplication1\LogViewer\obj\Debug\netcoreapp3.1\Prova.csprojAssemblyReference.cache
+C:\Pessoal\WebApplication1\WebApplication1\LogViewer\obj\Debug\netcoreapp3.1\staticwebassets\Prova.StaticWebAssets.Manifest.cache
+C:\Pessoal\WebApplication1\WebApplication1\LogViewer\obj\Debug\netcoreapp3.1\staticwebassets\Prova.StaticWebAssets.xml
+C:\Pessoal\WebApplication1\WebApplication1\LogViewer\obj\Debug\netcoreapp3.1\Prova.MvcApplicationPartsAssemblyInfo.cs
+C:\Pessoal\WebApplication1\WebApplication1\LogViewer\obj\Debug\netcoreapp3.1\Prova.MvcApplicationPartsAssemblyInfo.cache
+C:\Pessoal\WebApplication1\WebApplication1\LogViewer\obj\Debug\netcoreapp3.1\Prova.AssemblyInfoInputs.cache
+C:\Pessoal\WebApplication1\WebApplication1\LogViewer\obj\Debug\netcoreapp3.1\Prova.AssemblyInfo.cs

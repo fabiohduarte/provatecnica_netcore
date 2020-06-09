@@ -1,0 +1,17 @@
+C:\Users\Fabio_Duarte\Source\Repos\logviewer\LogViewer\bin\Debug\netcoreapp2.2\manifest.tools.yml
+C:\Users\Fabio_Duarte\Source\Repos\logviewer\LogViewer\bin\Debug\netcoreapp2.2\LogViewer.deps.json
+C:\Users\Fabio_Duarte\Source\Repos\logviewer\LogViewer\bin\Debug\netcoreapp2.2\LogViewer.runtimeconfig.json
+C:\Users\Fabio_Duarte\Source\Repos\logviewer\LogViewer\bin\Debug\netcoreapp2.2\LogViewer.runtimeconfig.dev.json
+C:\Users\Fabio_Duarte\Source\Repos\logviewer\LogViewer\bin\Debug\netcoreapp2.2\LogViewer.dll
+C:\Users\Fabio_Duarte\Source\Repos\logviewer\LogViewer\bin\Debug\netcoreapp2.2\LogViewer.pdb
+C:\Users\Fabio_Duarte\Source\Repos\logviewer\LogViewer\obj\Debug\netcoreapp2.2\LogViewer.RazorAssemblyInfo.cache
+C:\Users\Fabio_Duarte\Source\Repos\logviewer\LogViewer\obj\Debug\netcoreapp2.2\LogViewer.RazorAssemblyInfo.cs
+C:\Users\Fabio_Duarte\Source\Repos\logviewer\LogViewer\obj\Debug\netcoreapp2.2\LogViewer.AssemblyInfoInputs.cache
+C:\Users\Fabio_Duarte\Source\Repos\logviewer\LogViewer\obj\Debug\netcoreapp2.2\LogViewer.AssemblyInfo.cs
+C:\Users\Fabio_Duarte\Source\Repos\logviewer\LogViewer\obj\Debug\netcoreapp2.2\LogViewer.RazorTargetAssemblyInfo.cache
+C:\Users\Fabio_Duarte\Source\Repos\logviewer\LogViewer\obj\Debug\netcoreapp2.2\LogViewer.dll
+C:\Users\Fabio_Duarte\Source\Repos\logviewer\LogViewer\obj\Debug\netcoreapp2.2\LogViewer.pdb
+C:\Users\Fabio_Duarte\Source\Repos\logviewer\LogViewer\bin\Debug\netcoreapp2.2\appsettings.Development.json
+C:\Users\Fabio_Duarte\Source\Repos\logviewer\LogViewer\bin\Debug\netcoreapp2.2\appsettings.json
+C:\Users\Fabio_Duarte\Source\Repos\logviewer\LogViewer\bin\Debug\netcoreapp2.2\Properties\launchSettings.json
+C:\Users\Fabio_Duarte\Source\Repos\logviewer\LogViewer\obj\Debug\netcoreapp2.2\LogViewer.csprojAssemblyReference.cache

@@ -1,0 +1,31 @@
+﻿{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:53506"
+    }
+  },
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "LogViewer": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "applicationUrl": "https://localhost:53506",
+      //"launchUrl": "api/dashboard/GetMetricsByHour?startTime=2019-11-07T10:15:15.04852&endTime=2019-11-07T20:55:15.04852&env=dev&appNames=DBCMarcom.UI",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "VCAP_SERVICES": "{\"user-provided\":[{\"credentials\":{\"connectionString\":\"Data Source=AUSDWCOMPTFDB01.aus.amer.dell.com;Initial Catalog=Commerce_dev;User ID=DfsCommerceDB;Password=Df$Comm3rc3D9;\"},\"name\":\"commerce-sqlserver-2017-dev\"},{\"credentials\":{\"connectionString\":\"Data Source=AUSDWCOMPTFDB01.aus.amer.dell.com;Initial Catalog=Commerce_dev;User ID=DfsCommerceDB;Password=Df$Comm3rc3D9;\"},\"name\":\"commerce-sqlserver-2017\"}]}",
+        "CUPS_NAME": "commerce-sqlserver-2017-dev",
+        "CUPS_NAME_PROD": "commerce-sqlserver-2017",
+        "deployed-version": "This is a PCF environment variable created by Octopus and is included here for testing purposes"
+      }
+    }
+  }
+}

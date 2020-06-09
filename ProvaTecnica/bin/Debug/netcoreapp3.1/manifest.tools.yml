@@ -1,0 +1,18 @@
+﻿---
+applications:
+- name: log-viewer
+  buildpack: dicf_dotnet_core_buildpack_234_cflinuxfs3
+  command: dotnet LogViewer.dll
+  stack: cflinuxfs3
+  health-check-type: http
+  timeout: 80
+  path: .
+  instances: 1
+  memory: 256M
+  disk_quota: 512M
+  env:
+    CUPS_NAME: commerce-sqlserver-2017-dev
+    CUPS_NAME_PROD: commerce-sqlserver-2017
+  services:
+    - commerce-sqlserver-2017-dev
+    - commerce-sqlserver-2017
