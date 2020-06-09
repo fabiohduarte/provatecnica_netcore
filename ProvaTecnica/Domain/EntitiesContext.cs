@@ -34,15 +34,13 @@ namespace ProvaTecnica.Domain
             modelBuilder.HasDefaultSchema("dbo");
             modelBuilder.HasDbFunction(() => DbFunctions.JsonValue(default(string), default(string)))
                 .HasTranslation(args => SqlFunctionExpression.Create("JSON_VALUE", args, typeof(string), null));
-
-           /// modelBuilder.Entity<Usuarios>().Property(t => t.Body).HasColumnType("TEXT COLLATE NOCASE");
-
-           
         }
 
         
         public virtual DbSet<Usuario> Usuario { get; set; }
 
         public virtual DbSet<Perfil> Perfil { get; set; }
+
+        public virtual DbSet<Funcionalidade> Funcionalidade { get; set; }
     }
 }

@@ -20,5 +20,19 @@ namespace ProvaTecnica.Infrastructure
 
         Task<SearchResults> GetPerfis(CriterioBusca request);
 
+        Task<Perfil> GetPerfilById(int id);
+
+        Task<int> PutPerfil(Perfil perfil);
+
+        Task DeletePerfil(int id);
+
+        Task<SearchResults> GetFuncionalidades(CriterioBusca request);
+
+        Task<Funcionalidade> GetFuncionalidadeById(int id);
+
+        Task<int> PutFuncionalidade(Funcionalidade funcionalidade);
+
+        Task DeleteFuncionalidade(int id);
+
     }
 }

@@ -23,21 +23,14 @@ namespace ProvaTecnica.Controllers
         public async Task<ObjectResult> List([FromQuery] CriterioBusca req)
         {
             SearchResults result = new SearchResults();
-
-            //if (!String.IsNullOrEmpty(request.StartTime) && (!String.IsNullOrEmpty(request.EndTime)))
-            // {
-            result =
-
-                await _entitiesRepository.GetUsuarios(req);
-                    
-                  
-           // }
-
+       
+            result = await _entitiesRepository.GetUsuarios(req);
+                         
             return Ok(result);
         }
 
         [HttpGet("get")]
-        public async Task<ObjectResult> get(int id)
+        public async Task<ObjectResult> Get(int id)
         {           
             Usuario usu =  await _entitiesRepository.GetUsuarioById(id);
             return Ok(usu);

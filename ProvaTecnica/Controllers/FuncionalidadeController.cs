@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 namespace ProvaTecnica.Controllers
 {
     [Route("api/[controller]")]
-    public class PerfilController : ControllerBase
+    public class FuncionalidadeController : ControllerBase
     {
         private readonly IEntitiesRepository _entitiesRepository;
      
-        public PerfilController(IEntitiesRepository entitiesRepository)
+        public FuncionalidadeController(IEntitiesRepository entitiesRepository)
         {
             _entitiesRepository = entitiesRepository; 
         }
@@ -22,23 +22,32 @@ namespace ProvaTecnica.Controllers
         [HttpGet("list")]
         public async Task<ObjectResult> List([FromQuery] CriterioBusca req)
         {
-            SearchResults result = new SearchResults();         
-            result = await _entitiesRepository.GetPerfis(req);
+            SearchResults result = new SearchResults();
+       
+            result = await _entitiesRepository.GetFuncionalidades(req);
+                         
             return Ok(result);
         }
 
         [HttpGet("get")]
         public async Task<ObjectResult> Get(int id)
         {           
-            Perfil perf =  await _entitiesRepository.GetPerfilById(id);
-            return Ok(perf);
+            Funcionalidade obj =  await _entitiesRepository.GetFuncionalidadeById(id);
+            return Ok(obj);
         }
 
         [HttpPost("put")]
-        public async Task<ObjectResult> Put(Perfil perfil)
+        public async Task<ObjectResult> Put(Funcionalidade funcionalidade)
         {
-            var resp = await _entitiesRepository.PutPerfil(perfil);
+            var resp = await _entitiesRepository.PutFuncionalidade(funcionalidade);
             return Ok(resp);
+        }
+
+        [HttpPost("delete")]
+        public async Task<ObjectResult> Delete(int id)
+        {
+            await _entitiesRepository.DeleteFuncionalidade(id);
+            return Ok("");
         }
     }
 }
