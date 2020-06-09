@@ -9,7 +9,6 @@ export class ManterPerfil extends Component {
     super(props);
 
     this.validator = new FormValidator(PerfilFormRules());
-
     this.state = {
       perfil: { descPerfil: "" }, loading: true,
       validation: this.validator.valid()
@@ -21,40 +20,6 @@ export class ManterPerfil extends Component {
     let model = this.state.perfil;
     model[field] = value;
     this.setState({ model });
-    console.log(model);
-  }
-
-  handleInputBlur(event) {
-    const name = event.target.name || event.target.id;
-    //console.log(name);
-    if (event.target.type === 'text') {
-      const value = event.target.value;
-      /// const valueTrimmed = getTrimmed(value);
-
-      // let model = this.state.Perfil;
-      // mod/el[field] = value;
-
-      ////  this.setState({ model });
-    }
-
-    /// if (valueTrimmed !== value) {
-    //      this.updatecustomer(formSection, name, valueTrimmed);
-    //}
-
-
-
-    let stateToValidate = {
-
-      ///  ...this.state.Perfil,
-      ...this.state
-    }
-
-    //console.log(stateToValidate);
-
-
-    /// let validation = this.validator.validateOnBlur(stateToValidate, this.state.validation, name, "Perfil");             
-
-    // this.setState({ validation });            
   }
 
   async componentDidMount() {
@@ -87,8 +52,7 @@ export class ManterPerfil extends Component {
             <InputBox
               displayName="Descrição"
               value={this.state.perfil.descPerfil}
-              onChangeCallback={(value) => this.handleInputChange(value, "descPerfil")}
-              onBlurCallback={(event) => this.handleInputBlur(event)}
+              onChangeCallback={(value) => this.handleInputChange(value, "descPerfil")}         
               formSection="perfil"
               errorMessage={this.state.validation.descricao.message}
               validationClass={this.validator.getValidationClass("descPerfil", this.state.validation)}>

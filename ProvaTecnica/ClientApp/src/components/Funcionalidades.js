@@ -4,9 +4,10 @@ import { Button, Input, Dropdown } from 'reactstrap';
 export class Funcionalidades extends Component {
   constructor(props) {
     super(props);
-    this.state = { Funcionalidades: [], loading: true };
-    this.state.funcionalidade = {
-      descFuncionalidade: "",
+    this.state = {
+      funcionalidades: [], funcionalidade: {
+        descFuncionalidade: "",
+      }, loading: true
     };
   }
 
@@ -22,14 +23,14 @@ export class Funcionalidades extends Component {
     window.location.href = "/manterfuncionalidade?id=" + id;
   }
 
-   async handleExcluirClick(id) {
+  async handleExcluirClick(id) {
     const url = "api/funcionalidade/delete";
     const response = await fetch(url, {
       method: "POST",
-      headers: {       
-        'Content-Type':'application/x-www-form-urlencoded', 
-      },    
-      body: 'id='+id
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: 'id=' + id
     });
 
     this.handleClickPesquisar();
@@ -51,7 +52,7 @@ export class Funcionalidades extends Component {
         <thead>
           <tr>
             <th>#</th>
-            <th>Descrição</th>        
+            <th>Descrição</th>
             <th></th>
             <th></th>
           </tr>
@@ -61,7 +62,7 @@ export class Funcionalidades extends Component {
               <Input
                 value={obj.state.funcionalidade.nome}
                 onChange={(event) => obj.handleInputChange(event, "descFuncionalidade")}>
-              </Input></th>                   
+              </Input></th>
             <th></th>
             <th><Button className="btn btn-primary" onClick={() => obj.handleClickPesquisar()}>Filtrar</Button></th>
           </tr>
@@ -70,10 +71,9 @@ export class Funcionalidades extends Component {
           {funcionalidades.map(func =>
             <tr key={func.idFuncionalidade}>
               <td>{func.idFuncionalidade}</td>
-              <td>{func.descFuncionalidade}</td>
-            
+              <td className="w-100">{func.descFuncionalidade}</td>
               <td><Button className="btn btn-primary" onClick={() => obj.handleEditClick(func.idFuncionalidade)}>Edit</Button></td>
-              <td><Button className="btn btn-primary" onClick={() =>  obj.handleExcluirClick(func.idFuncionalidade)}>Excluir</Button></td>
+              <td><Button className="btn btn-primary" onClick={() => obj.handleExcluirClick(func.idFuncionalidade)}>Excluir</Button></td>
             </tr>
           )}
         </tbody>

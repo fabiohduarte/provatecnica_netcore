@@ -10,7 +10,6 @@ export class ManterUsuario extends Component {
     super(props);
 
     this.validator = new FormValidator(UsuarioFormRules());
-
     this.state = {
       usuario: { nome: "", login: "", email: "", idUsuario: "", idPerfil: "" }, loading: true,
       perfis: [],
@@ -45,50 +44,11 @@ export class ManterUsuario extends Component {
     let model = this.state.usuario;
     model[field] = value;
     this.setState({ model });
-    console.log(model);
-  }
-
-  handleInputBlur(event) {
-    const name = event.target.name || event.target.id;
-    //console.log(name);
-    if (event.target.type === 'text') {
-      const value = event.target.value;
-      /// const valueTrimmed = getTrimmed(value);
-
-      // let model = this.state.usuario;
-      // mod/el[field] = value;
-
-      ////  this.setState({ model });
-    }
-
-    /// if (valueTrimmed !== value) {
-    //      this.updatecustomer(formSection, name, valueTrimmed);
-    //}
-
-
-
-    let stateToValidate = {
-
-      ///  ...this.state.usuario,
-      ...this.state
-    }
-
-    //console.log(stateToValidate);
-
-
-    /// let validation = this.validator.validateOnBlur(stateToValidate, this.state.validation, name, "usuario");             
-
-    // this.setState({ validation });            
   }
 
   async componentDidMount() {
-
-    console.log('componentDidMount');
     const perfis = await this.getPerfis();
-    ///console.log(data);
-
     this.setState({ perfis });
-    console.log(this.state);
 
     const id = this.props.location.search ? this.props.location.search.replace("?id=", "") : "";
     if (id)
@@ -103,21 +63,7 @@ export class ManterUsuario extends Component {
 
     if (validation.isValid) {
       await this.salvaUsuario();
-      // handle actual form submission here
-      ////  DellMetricsLogNavigation.toApplicationDisclosures();
-      //// this.props.history.push('/disclosures');
-      //  window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-    } else {
-      /*  const iTimeout = setTimeout(() => {
-           const firstInvalid = document.querySelector(".is-invalid");
-           if (firstInvalid) {
-               const label = document.querySelector(`label[for='${firstInvalid.id}']`);
-               label.scrollIntoView({ block: "start", behavior: 'smooth' });
-               clearTimeout(iTimeout);
-           }
-       }, 100); */
     }
-
   }
 
   handleCancelarClick() {
@@ -171,8 +117,7 @@ export class ManterUsuario extends Component {
             <SelectBox displayName="Perfil"
               options={this.getPerfisOptionList()}
               value={this.state.usuario.idPerfil}
-              onChangeCallback={(value) => this.handleInputChange(value, "idPerfil")}
-             // onBlurCallback={(event) => this.handleInputBlur(event)}
+              onChangeCallback={(value) => this.handleInputChange(value, "idPerfil")}      
               formSection="usuario"
               errorMessage={this.state.validation.perfil.message}
               validationClass={this.validator.getValidationClass("perfil", this.state.validation)}></SelectBox>
@@ -185,7 +130,6 @@ export class ManterUsuario extends Component {
   }
 
   async buscaUsuario(id) {
-   /// console.log(this.props);
     const response = await fetch(`api/usuario/get?id=${id}`);
     const data = await response.json();
     this.setState({ usuario: data, loading: false });
@@ -193,22 +137,12 @@ export class ManterUsuario extends Component {
 
   async salvaUsuario() {
     console.log(JSON.stringify(this.state.usuario));
-    const response = await fetch('api/usuario/put', {
+    await fetch('api/usuario/put', {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      ///body: "{\"idUsuario\":\"\",\"nome\":\"ffsdf\",\"login\":\"sdfsf\",\"email\":\"dsf\"}"
       body: JSON.stringify(this.state.usuario)
     });
-
-
-
-
-    console.log(response);
-
-    /// window.location.href = "/"
-    // const data = await response.json();
-    /// this.setState({ usuario: data, loading: false });
   }
 }

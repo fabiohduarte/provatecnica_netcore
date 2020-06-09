@@ -4,9 +4,12 @@ import { Button, Input } from 'reactstrap';
 export class Perfis extends Component {
   constructor(props) {
     super(props);
-    this.state = { perfis: [], loading: true };
-    this.state.perfil = {
-      descPerfil: "",
+    this.state = {
+      perfis: [], 
+      perfil: {
+        descPerfil: "",
+      }, 
+      loading: true
     };
   }
 
@@ -22,21 +25,20 @@ export class Perfis extends Component {
     window.location.href = "/manterperfil?id=" + id;
   }
 
-   async handleExcluirClick(id) {
+  async handleExcluirClick(id) {
     const url = "api/perfil/delete";
-    const response = await fetch(url, {
+    await fetch(url, {
       method: "POST",
-      headers: {       
-        'Content-Type':'application/x-www-form-urlencoded', 
-      },    
-      body: 'id='+id
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: 'id=' + id
     });
-
     this.handleClickPesquisar();
   }
 
   handleInputChange(event, field, obj) {
-    let model = this.state.Perfil;
+    let model = this.state.perfil;
     model[field] = event.target.value;
     this.setState({ model });
   }
@@ -51,7 +53,7 @@ export class Perfis extends Component {
         <thead>
           <tr>
             <th>#</th>
-            <th>Descrição</th>        
+            <th>Descrição</th>
             <th></th>
             <th></th>
           </tr>
@@ -61,8 +63,8 @@ export class Perfis extends Component {
               <Input
                 value={obj.state.perfil.descPerfil}
                 onChange={(event) => obj.handleInputChange(event, "descPerfil")}>
-              </Input></th>                   
-            <th></th>
+              </Input></th>
+            <th></th>       
             <th><Button className="btn btn-primary" onClick={() => obj.handleClickPesquisar()}>Filtrar</Button></th>
           </tr>
         </thead>
@@ -70,10 +72,9 @@ export class Perfis extends Component {
           {perfis.map(perf =>
             <tr key={perf.idPerfil}>
               <td>{perf.idPerfil}</td>
-              <td>{perf.descPerfil}</td>
-            
+              <td className="w-100">{perf.descPerfil}</td>                     
               <td><Button className="btn btn-primary" onClick={() => obj.handleEditClick(perf.idPerfil)}>Edit</Button></td>
-              <td><Button className="btn btn-primary" onClick={() =>  obj.handleExcluirClick(perf.idPerfil)}>Excluir</Button></td>
+              <td><Button className="btn btn-primary" onClick={() => obj.handleExcluirClick(perf.idPerfil)}>Excluir</Button></td>
             </tr>
           )}
         </tbody>

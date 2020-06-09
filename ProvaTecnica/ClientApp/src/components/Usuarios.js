@@ -4,13 +4,12 @@ import { Button, Input, Dropdown } from 'reactstrap';
 export class Usuarios extends Component {
   constructor(props) {
     super(props);
-    this.state = { usuarios: [], loading: true };
-    this.state.usuario = {
+    this.state = { usuarios: [], usuario: {
       nome: "",
       login: "",
       email: "",
       idPerfil: ""
-    };
+    }, loading: true };
   }
 
   componentDidMount() {
@@ -25,9 +24,9 @@ export class Usuarios extends Component {
     window.location.href = "/manterusuario?id=" + id;
   }
 
-   async handleExcluirClick(id) {
+  async handleExcluirClick(id) {
     const url = "api/usuario/delete";
-    const response = await fetch(url, {
+    await fetch(url, {
       method: "POST",
       headers: {       
         'Content-Type':'application/x-www-form-urlencoded', 

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Col, Row } from 'reactstrap';
 import InputBox from './forms/InputBox'
-import SelectBox from './forms/SelectBox'
 import FormValidator from '../validation/FormValidator'
 import FuncionalidadeFormRules from '../validation/FuncionalidadeFormRules'
 
@@ -10,7 +9,6 @@ export class ManterFuncionalidade extends Component {
     super(props);
 
     this.validator = new FormValidator(FuncionalidadeFormRules());
-
     this.state = {
       funcionalidade: { descFuncionalidade: "" }, loading: true,
       validation: this.validator.valid()
@@ -19,43 +17,9 @@ export class ManterFuncionalidade extends Component {
   }
 
   handleInputChange(value, field) {
-    let model = this.state.Funcionalidade;
+    let model = this.state.funcionalidade;
     model[field] = value;
     this.setState({ model });
-    console.log(model);
-  }
-
-  handleInputBlur(event) {
-    const name = event.target.name || event.target.id;
-    //console.log(name);
-    if (event.target.type === 'text') {
-      const value = event.target.value;
-      /// const valueTrimmed = getTrimmed(value);
-
-      // let model = this.state.Funcionalidade;
-      // mod/el[field] = value;
-
-      ////  this.setState({ model });
-    }
-
-    /// if (valueTrimmed !== value) {
-    //      this.updatecustomer(formSection, name, valueTrimmed);
-    //}
-
-
-
-    let stateToValidate = {
-
-      ///  ...this.state.Funcionalidade,
-      ...this.state
-    }
-
-    //console.log(stateToValidate);
-
-
-    /// let validation = this.validator.validateOnBlur(stateToValidate, this.state.validation, name, "Funcionalidade");             
-
-    // this.setState({ validation });            
   }
 
   async componentDidMount() {
@@ -65,9 +29,8 @@ export class ManterFuncionalidade extends Component {
   }
 
   async handleSalvarClick() {
-
     this.validator.formSubmitted();
-    const validation = this.validator.validate(this.state.Funcionalidade, "Funcionalidade");
+    const validation = this.validator.validate(this.state.funcionalidade, "funcionalidade");
     this.setState({ validation });
 
     if (validation.isValid) {
@@ -90,8 +53,7 @@ export class ManterFuncionalidade extends Component {
               displayName="Descrição"
               value={this.state.funcionalidade.descFuncionalidade}
               onChangeCallback={(value) => this.handleInputChange(value, "descFuncionalidade")}
-              onBlurCallback={(event) => this.handleInputBlur(event)}
-              formSection="Funcionalidade"
+              formSection="funcionalidade"
               errorMessage={this.state.validation.descricao.message}
               validationClass={this.validator.getValidationClass("descFuncionalidade", this.state.validation)}>
             </InputBox>
