@@ -20,7 +20,7 @@
       "applicationUrl": "https://localhost:53506",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "DBCONNECTIONSTRING": "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Pessoal\\SQL\\Database.mdf;Integrated Security=True;Connect Timeout=30"
+        "DBCONNECTIONSTRING": "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Database.mdf;Integrated Security=True;Connect Timeout=30"
       }
     }
   }
