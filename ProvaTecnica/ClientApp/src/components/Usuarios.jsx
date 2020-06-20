@@ -1,19 +1,26 @@
 import React, { Component } from 'react';
 import { Button, Input, Dropdown } from 'reactstrap';
+import Page from './Page';
+import { List } from './List';
 
 export class Usuarios extends Component {
   constructor(props) {
     super(props);
-    this.state = { usuarios: [], usuario: {
+
+    const columns = [{ name: "idUsuario", label: "#" }, { name: "nome", label: "Nome" }];
+
+    this.state = { columns, usuarios: [], usuario: {
       nome: "",
       login: "",
       email: "",
       idPerfil: ""
     }, loading: true };
+
+    
   }
 
-  componentDidMount() {
-    this.listaUsuarios();
+  async componentDidMount() {
+     this.listaUsuarios();
   }
 
   handleNovoClick() {
@@ -47,7 +54,7 @@ export class Usuarios extends Component {
     await this.listaUsuarios(this.state.usuario.nome, this.state.usuario.login, this.state.usuario.email);
   }
 
-  static renderizaTabelaUsuarios(usuarios, obj) {
+  renderizaTabelaUsuarios() {
     return (
       <table className='table table-striped' aria-labelledby="tabelLabel">
         <thead>
@@ -64,39 +71,39 @@ export class Usuarios extends Component {
             <th></th>
             <th>
               <Input
-                value={obj.state.usuario.nome}
-                onChange={(event) => obj.handleInputChange(event, "nome")}>
+                value={this.state.usuario.nome}
+                onChange={(event) => this.handleInputChange(event, "nome")}>
               </Input></th>
             <th>
               <Input
-                value={obj.state.usuario.login}
-                onChange={(event) => obj.handleInputChange(event, "login")}>
+                value={this.state.usuario.login}
+                onChange={(event) => this.handleInputChange(event, "login")}>
               </Input>
             </th>
             <th>
               <Input
-                value={obj.state.usuario.email}
-                onChange={(event) => obj.handleInputChange(event, "email")}>
+                value={this.state.usuario.email}
+                onChange={(event) => this.handleInputChange(event, "email")}>
               </Input>
             </th>
             <th><Dropdown
-                value={obj.state.usuario.idPerfil}
-                onChange={(event) => obj.handleInputChange(event, "idPerfil")}>
+                value={this.state.usuario.idPerfil}
+                onChange={(event) => this.handleInputChange(event, "idPerfil")}>
               </Dropdown></th>
             <th></th>
-            <th><Button className="btn btn-primary" onClick={() => obj.handleClickPesquisar()}>Filtrar</Button></th>
+            <th><Button className="btn btn-primary" onClick={() => this.handleClickPesquisar()}>Filtrar</Button></th>
           </tr>
         </thead>
         <tbody>
-          {usuarios.map(usu =>
+          {this.state.usuarios.map(usu =>
             <tr key={usu.idUsuario}>
               <td>{usu.idUsuario}</td>
               <td>{usu.nome}</td>
               <td>{usu.login}</td>
               <td>{usu.email}</td>
               <td>{usu.descPerfil}</td>
-              <td><Button className="btn btn-primary" onClick={() => obj.handleEditClick(usu.idUsuario)}>Edit</Button></td>
-              <td><Button className="btn btn-primary" onClick={() =>  obj.handleExcluirClick(usu.idUsuario)}>Excluir</Button></td>
+              <td><Button className="btn btn-primary" onClick={() => this.handleEditClick(usu.idUsuario)}>Edit</Button></td>
+              <td><Button className="btn btn-primary" onClick={() =>  this.handleExcluirClick(usu.idUsuario)}>Excluir</Button></td>
             </tr>
           )}
         </tbody>
@@ -105,19 +112,20 @@ export class Usuarios extends Component {
   }
 
   render() {
-    let contents = this.state.loading
+   /*  let contents = this.state.loading
       ? <p><em>Carregando...</em></p>
-      : Usuarios.renderizaTabelaUsuarios(this.state.usuarios, this);
-
+      : this.renderizaTabelaUsuarios(); */
+      console.log('this.props');
+      console.log(this.props);
     return (
-      <div>
-        <h1>Lista de Usuários</h1>
-        <p></p>
+      <React.Fragment>
+        <Page title="Lista de Usuários"/>  
+        { this.state.usuarios.length}   
         <div className="mt-3 mb-3">
           <Button className="btn btn-primary" onClick={() => this.handleNovoClick()}>Novo</Button>
         </div>
-        {contents}
-      </div>
+         <List columns={this.state.columns} data={this.state.usuarios} />
+        </React.Fragment>
     );
   }
 
@@ -132,6 +140,13 @@ export class Usuarios extends Component {
     });
 
     const data = await response.json();
+    //console.log(data);
     this.setState({ usuarios: data.results, loading: false });
+    this.props = { ...this.props, data };
+    console.log('this.props');
+    console.log(this.props);
+    ///this.forceUpdate();
+    //console
+    return data.results;
   }
 }
