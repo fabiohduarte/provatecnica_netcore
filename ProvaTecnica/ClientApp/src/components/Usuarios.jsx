@@ -12,7 +12,7 @@ export class Usuarios extends Component {
     { name: "nome", label: "Nome", filter: true },
     { name: "login", label: "Login", filter: true },
     { name: "email", label: "E-mail", filter: true },
-    { name: "descPerfil", label: "Perfil" }];
+    { name: "descPerfil", label: "Perfil", filter: true, lookupData: true, data: [] }];
 
     this.state = {
       columns, usuarios: [],
@@ -27,7 +27,32 @@ export class Usuarios extends Component {
 
   }
 
+  async listaPerfis() {
+  
+    const url = "api/perfil/list"
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+
+    const data = await response.json();
+    
+    let optionList = [{ value: "", text: ""}];
+     data.results.map((perfil, id) => {
+        optionList.push({ value: perfil.idPerfil, text: perfil.descPerfil });
+      });
+      
+    let columns = this.state.columns;
+    columns[4]["data"] = optionList;
+
+    this.setState({ columns });
+  }
+
    async componentDidMount() {
+    
+    await this.listaPerfis();
     await this.listaUsuarios(this.state.model);
   }  
 
@@ -66,7 +91,8 @@ export class Usuarios extends Component {
   async listaUsuarios(model/* nome = "", login = "", email = "" */) {
    
     const queryParams = "?nome=" + this.getParam(model, "nome") + "&login=" + this.getParam(model,"login") + 
-    "&email=" + this.getParam(model,"email");
+    "&email=" + this.getParam(model,"email") + "&idperfil=" + this.getParam(model,"descPerfil");
+    console.log(queryParams);
     const url = "api/usuario/list" + queryParams;
     console.log(url);
     const response = await fetch(url, {

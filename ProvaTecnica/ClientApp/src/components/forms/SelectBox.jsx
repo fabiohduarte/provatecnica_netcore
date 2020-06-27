@@ -24,11 +24,31 @@ export default class extends React.PureComponent {
             errorMessage,     
             onChangeCallback = () => false,
             onBlurCallback = () => false,
-            className
+            className,
+            filter
         } = this.props;
 
        
         return (
+            filter ?
+
+            <select
+            ref={this.inputRef}
+            className={`form-control ${className}`}
+            id={id}
+            tabIndex={tabIndex}
+            value={value}
+            onChange={onChangeCallback}
+            onBlur={onBlurCallback}
+            disabled={disabled}>
+            {
+                options.map(
+                    option => <option key={option.value} value={option.value}>{option.text}</option>
+                )
+            }
+        </select>      
+
+        :
             <div className={`select-box form-group ${errorMessage && "invalid"} `}>
                 <label htmlFor={id}>{displayName}</label>
                 
